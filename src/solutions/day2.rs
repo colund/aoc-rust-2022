@@ -88,7 +88,8 @@ fn part2(them_me_vec: &Vec<(RPS, RPS)>) -> i32 {
         .map(|(them, me)| {
             let me2 = me.to_winning_losing_drawn(&them);
             score(me2, &them) + me2.as_value()
-        }).sum()
+        })
+        .sum()
 }
 
 fn part1(them_me_vec: &Vec<(RPS, RPS)>) -> i32 {
