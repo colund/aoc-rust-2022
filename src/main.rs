@@ -3,12 +3,13 @@ extern crate core;
 use crate::solutions::day1::day1;
 use crate::solutions::day2::day2;
 use crate::solutions::day3::day3;
+use crate::solutions::day4::day4;
 use std::env;
 
 mod solutions;
 
 fn main() {
-    let days: Vec<fn()> = vec![day1, day2, day3];
+    let days: Vec<fn()> = vec![day1, day2, day3, day4];
 
     let args: Vec<String> = env::args().collect();
     match args.len() {
