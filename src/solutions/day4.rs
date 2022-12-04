@@ -6,27 +6,27 @@ pub fn day4() {
     let string = read_to_string("day4.txt").unwrap();
     let lines: Lines = string.lines();
 
-    let pairs: Vec<RangePair> = lines.map(|line| to_range_pair(line)).collect();
+    let pairs: Vec<RangePair> = lines.map(to_range_pair).collect();
     part1(&pairs);
     part2(&pairs);
 }
 
-fn part1(pairs: &Vec<RangePair>) {
+fn part1(pairs: &[RangePair]) {
     let result: usize = pairs
-        .into_iter()
+        .iter()
         .map(|p| (p.min1 <= p.min2 && p.max1 >= p.max2) || (p.min2 <= p.min1 && p.max2 >= p.max1))
         .filter(|p| *p)
         .count();
-    println!("Day 4 part 1: {:?}", result);
+    println!("day4 part 1: {:?}", result);
 }
 
-fn part2(pairs: &Vec<RangePair>) {
+fn part2(pairs: &[RangePair]) {
     let result = pairs
-        .into_iter()
+        .iter()
         .map(|p| (p.max1 >= p.min2 && p.max1 <= p.max2) || (p.max2 >= p.min1 && p.max2 <= p.max1))
         .filter(|b| *b)
         .count();
-    println!("Day 4 part 2: {:?}", result);
+    println!("day4 part 2: {:?}", result);
 }
 
 #[derive(Debug)]

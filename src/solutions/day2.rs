@@ -64,12 +64,12 @@ fn score(me: &RPS, them: &RPS) -> i32 {
 }
 
 fn string_to_rps(abc: &str) -> Option<RPS> {
-    return match abc {
+    match abc {
         "A" | "X" => Some(Rock),
         "B" | "Y" => Some(Paper),
         "C" | "Z" => Some(Scissors),
         &_ => None,
-    };
+    }
 }
 
 pub fn day2() {
@@ -82,20 +82,20 @@ pub fn day2() {
     println!("day2 part 2: {:?}", part2(&them_me_vec));
 }
 
-fn part2(them_me_vec: &Vec<(RPS, RPS)>) -> i32 {
+fn part2(them_me_vec: &[(RPS, RPS)]) -> i32 {
     them_me_vec
         .iter()
         .map(|(them, me)| {
-            let me2 = me.to_winning_losing_drawn(&them);
-            score(me2, &them) + me2.as_value()
+            let me2 = me.to_winning_losing_drawn(them);
+            score(me2, them) + me2.as_value()
         })
         .sum()
 }
 
-fn part1(them_me_vec: &Vec<(RPS, RPS)>) -> i32 {
+fn part1(them_me_vec: &[(RPS, RPS)]) -> i32 {
     let part1: i32 = them_me_vec
         .iter()
-        .map(|(them, me)| score(&me, &them) + me.as_value())
+        .map(|(them, me)| score(me, them) + me.as_value())
         .sum();
     part1
 }
@@ -108,7 +108,7 @@ fn get_them_me_rps_vec(string: String) -> Vec<(RPS, RPS)> {
     // Convert {A, B, C}  {X, Y, Z} pairs into a vector of Rock Paper Scissor tuples (pairs)
     lines
         .map(|line| {
-            let (abc, xyz) = line.split_once(" ").unwrap();
+            let (abc, xyz) = line.split_once(' ').unwrap();
             (string_to_rps(abc).unwrap(), string_to_rps(xyz).unwrap())
         })
         .collect()

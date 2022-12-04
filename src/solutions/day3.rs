@@ -10,7 +10,7 @@ pub fn day3() {
 }
 
 fn part2(lines: &Lines) {
-    let mut iter = lines.clone().into_iter();
+    let mut iter = lines.clone();
     let mut sum = 0;
     while let (Some(x), Some(y), Some(z)) = (iter.next(), iter.next(), iter.next()) {
         let x_set: HashSet<char> = x.chars().collect();

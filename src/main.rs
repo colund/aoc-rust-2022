@@ -4,12 +4,15 @@ use crate::solutions::day1::day1;
 use crate::solutions::day2::day2;
 use crate::solutions::day3::day3;
 use crate::solutions::day4::day4;
+use crate::solutions::day5::day5;
+use crate::solutions::day6::day6;
+
 use std::env;
 
 mod solutions;
 
 fn main() {
-    let days: Vec<fn()> = vec![day1, day2, day3, day4];
+    let days: Vec<fn()> = vec![day1, day2, day3, day4, day5, day6];
 
     let args: Vec<String> = env::args().collect();
     match args.len() {
@@ -33,7 +36,7 @@ fn main() {
                             - 1;
                         let day_fn = days
                             .get(day_index)
-                            .expect(&format!("{} not handled!", day_num));
+                            .unwrap_or_else(|| panic!("{} not handled!", day_num));
                         day_fn()
                     }
                 }

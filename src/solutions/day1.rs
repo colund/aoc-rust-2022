@@ -22,10 +22,10 @@ fn day1sums() -> Vec<i32> {
             curr = 0;
         } else {
             let i: i32 = line.parse().unwrap();
-            curr = curr + i;
+            curr += i;
         }
     }
     sums.sort_by(|a, b| b.cmp(a)); // Sort descending
 
-    return sums;
+    sums
 }
