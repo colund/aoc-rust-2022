@@ -34,10 +34,10 @@ fn move_crane(lines: Lines, crane_version: &CraneVersion) -> String {
     }
 
     let front_elems: String = stacks.iter_mut().map(|s| s.pop_front().unwrap()).collect();
-    return front_elems;
+    front_elems
 }
 
-fn do_move(line: &str, stacks: &mut Vec<VecDeque<char>>, crane_version: &CraneVersion) {
+fn do_move(line: &str, stacks: &mut [VecDeque<char>], crane_version: &CraneVersion) {
     let re = Regex::new(
         r"move (?P<count>\d+) from (?P<from>\d+) to (?P<to>\d+)").unwrap();
     let caps = re.captures(line).unwrap();

@@ -1,7 +1,5 @@
 use std::collections::HashSet;
 use std::fs::read_to_string;
-use std::process::exit;
-use std::str::Chars;
 
 pub fn day6() {
     let string = read_to_string("day6.txt").unwrap();
@@ -24,5 +22,5 @@ fn day_6(line: &str, unique_count: usize) -> usize {
         }
         pos += 1;
     }
-    return pos + unique_count;
+    pos + unique_count
 }
