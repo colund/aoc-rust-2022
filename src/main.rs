@@ -6,13 +6,14 @@ use crate::solutions::day3::day3;
 use crate::solutions::day4::day4;
 use crate::solutions::day5::day5;
 use crate::solutions::day6::day6;
+use crate::solutions::day7::day7;
 
 use std::env;
 
 mod solutions;
 
 fn main() {
-    let days: Vec<fn()> = vec![day1, day2, day3, day4, day5, day6];
+    let days: Vec<fn()> = vec![day1, day2, day3, day4, day5, day6, day7];
 
     let args: Vec<String> = env::args().collect();
     match args.len() {
